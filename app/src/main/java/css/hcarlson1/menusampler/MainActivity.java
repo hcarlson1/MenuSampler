@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -20,15 +21,16 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);//set up automatically
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab); //the little button in the lower right of the screen
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                        .setAction("Action", null)
+                        .show();
             }
         });
 
@@ -53,14 +55,14 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) { //displays our main menu as the main menu
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) { //our code
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -68,6 +70,12 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Toast.makeText(getApplicationContext(), "We should display settings...", Toast.LENGTH_LONG)
+                    .show(); //toast is the pop up menu
+            return true;
+        } else if (id == R.id.action_about){
+            Toast.makeText(getApplicationContext(), "We should show about info...", Toast.LENGTH_LONG)
+                    .show();
             return true;
         }
 
@@ -76,15 +84,22 @@ public class MainActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(MenuItem item) { //navigation drawer code/what it does
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            Snackbar.make(getWindow().getDecorView(), "Display camera", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null)
+                    .show();
         } else if (id == R.id.nav_gallery) {
-
+            Snackbar.make(getWindow().getDecorView(), "Display gallery", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null)
+                    .show();
         } else if (id == R.id.nav_slideshow) {
+            Snackbar.make(getWindow().getDecorView(), "Display slideshow", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null)
+                    .show();
 
         } else if (id == R.id.nav_manage) {
 
